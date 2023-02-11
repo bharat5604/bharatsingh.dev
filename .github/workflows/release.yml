@@ -1,0 +1,27 @@
+name: Releases
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  changelog:
+    runs-on: ubintu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: conventional Changelog Action
+        id: changelog
+        uses: triPSs/conventional-changelog-action@v3.7.1
+        with:
+          github-token: ${{secrets.CHANGELOG_RELEASE}}
+
+      - name: create release
+        uses: actions/create-release@v1
+        if: ${{teps.changelog.outputs.skkiped=='false'}}
+        env:
+          GITHUB_TOKEN: ${{secrets.CHANGELOG_RELEASE}}
+        with:
+          tage_name: ${{steps.changelog.outputs.tag}}
+          release_name: ${{steps.changelog.outputs.tag}}
+          body: ${{steps.changelog.outputs.clean_changelog}}
