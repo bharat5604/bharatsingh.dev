@@ -18,7 +18,7 @@ jobs:
 
       - name: create release
         uses: actions/create-release@v1
-        if: ${{teps.changelog.outputs.skkiped=='false'}}
+        if: ${{steps.changelog.outputs.skkiped=='false'}}
         env:
           GITHUB_TOKEN: ${{secrets.CHANGELOG_RELEASE}}
         with:
