@@ -22,6 +22,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.CHANGELOG_RELEASE}}
         with:
-          tag_name: ${{steps.changelog.outputs.tag}}
-          release_name: ${{steps.changelog.outputs.tag}}
-          body: ${{steps.changelog.outputs.clean_changelog}}
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
