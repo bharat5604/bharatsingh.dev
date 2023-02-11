@@ -19,7 +19,7 @@ jobs:
       # release info is now in main so we can continue as before
       - name: create release with last commit
         uses: actions/create-release@v1
-        if: steps.changelog.outputs.skipped == 'false'
+        # if: steps.changelog.outputs.skipped == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.CHANGELOG_RELEASE }}
         with:
