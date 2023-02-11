@@ -15,22 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Create a temporary, uniquely named branch to push release info to
-      - name: create temporary branch
-        uses: peterjgrainger/action-create-branch@v2.3.0
-        id: create-branch
+      # # Create a temporary, uniquely named branch to push release info to
+      # - name: create temporary branch
+      #   uses: peterjgrainger/action-create-branch@v2.3.0
+      #   id: create-branch
 
-      # check out the repository afterwards
-      - uses: actions/checkout@v3
+      # # check out the repository afterwards
+      # - uses: actions/checkout@v2
 
-      # fetch branches and switch to the temporary branch
-      - name: switch to new branch
-        run: git fetch --all && git checkout --track origin/release-from-${{ github.sha }}
+      # # fetch branches and switch to the temporary branch
+      # - name: switch to new branch
+      #   run: git fetch --all && git checkout --track origin/release-from-${{ github.sha }}
 
       # create release info and push it upstream
       - name: conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
+        uses: TriPSs/conventional-changelog-action@v3.7.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version-file: "./package.json,./package-lock.json"
