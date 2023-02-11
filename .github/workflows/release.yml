@@ -39,18 +39,18 @@ jobs:
           skip-git-pull: true
 
       # create PR using GitHub CLI
-      - name: create PR with release info
-        id: create-pr
-        run: gh pr create --base main --head release-from-${{ github.sha }} --title 'Merge new release into main' --body 'Created by Github action'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: create PR with release info
+      #   id: create-pr
+      #   run: gh pr create --base main --head release-from-${{ github.sha }} --title 'Merge new release into main' --body 'Created by Github action'
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # merge PR using GitHub CLI
-      - name: merge PR with release info
-        id: merge-pr
-        run: gh pr merge --admin --merge --subject 'Merge release info' --delete-branch
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # # merge PR using GitHub CLI
+      # - name: merge PR with release info
+      #   id: merge-pr
+      #   run: gh pr merge --admin --merge --subject 'Merge release info' --delete-branch
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # release info is now in main so we can continue as before
       - name: create release with last commit
