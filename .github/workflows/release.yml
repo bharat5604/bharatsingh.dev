@@ -16,12 +16,12 @@ jobs:
         with:
           github-token: ${{secrets.CHANGELOG_RELEASE}}
 
-     - name: create release with last commit
-       uses: actions/create-release@v1
-       if: steps.changelog.outputs.skipped == 'false'
-       env:
+      - name: create release with last commit
+        uses: actions/create-release@v1
+        if: steps.changelog.outputs.skipped == 'false'
+        env:
           GITHUB_TOKEN: ${{ secrets.CHANGELOG_RELEASE }}
-       with:
+        with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
