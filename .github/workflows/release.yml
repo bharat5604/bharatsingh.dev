@@ -23,6 +23,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CHANGELOG_RELEASE }}
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
